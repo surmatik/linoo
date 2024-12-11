@@ -4,13 +4,12 @@ import { fetchBlogPostBySlug } from '../../lib/api';
 import Link from 'next/link';
 
 interface BlogPostProps {
-    params: {
-        slug: string;
-    };
+    params: Promise<{ slug: string }>;
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-    const post = await fetchBlogPostBySlug(params.slug);
+    const { slug } = await params; // Destrukturierung nach Auflösung des Promises
+    const post = await fetchBlogPostBySlug(slug);
 
     if (!post) return <p>Blog post not found</p>;
 
@@ -23,7 +22,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
             {post.Image && post.Image.url && (
                 <div className="post-image-wrapper">
                     <Image
-                        src={post.Image.url}
+                        src={`https://strapi.prod-strapi-fra-01.surmatik.ch/${post.Image.url}`}
                         alt={post.Title}
                         width={800}
                         height={450}
@@ -37,7 +36,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
             </h1>
 
             <div className="post-content">
-                <ReactMarkdown>{post.Content}</ReactMarkdown>
+                <ReactMarkdown>{post.Content}</ReactMarkdown> {/* Render Markdown content */}
             </div>
 
             <Link href="/" className="back-button">
