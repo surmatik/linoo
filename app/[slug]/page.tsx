@@ -23,7 +23,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
             {post.Image && post.Image.url && (
                 <div className="post-image-wrapper">
                     <Image
-                        src={`http://localhost:1337${post.Image.url}`}
+                        src={post.Image.url}
                         alt={post.Title}
                         width={800}
                         height={450}
@@ -37,7 +37,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
             </h1>
 
             <div className="post-content">
-                <ReactMarkdown>{post.Content}</ReactMarkdown> {/* Render Markdown content */}
+                <ReactMarkdown>{post.Content}</ReactMarkdown>
             </div>
 
             <Link href="/" className="back-button">
