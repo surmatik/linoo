@@ -3,7 +3,13 @@ import ReactMarkdown from 'react-markdown';
 import { fetchBlogPostBySlug } from '../../lib/api';
 import Link from 'next/link';
 
-export default async function BlogPost({ params }) {
+interface BlogPostProps {
+    params: {
+        slug: string;
+    };
+}
+
+export default async function BlogPost({ params }: BlogPostProps) {
     const post = await fetchBlogPostBySlug(params.slug);
 
     if (!post) return <p>Blog post not found</p>;
@@ -13,9 +19,7 @@ export default async function BlogPost({ params }) {
     const highlightedPart = titleWords.slice(2).join(' '); // Rest of the title
 
     return (
-
         <div className="blog-post-container">
-
             {post.Image && post.Image.url && (
                 <div className="post-image-wrapper">
                     <Image
