@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
+        protocol: 'https',
+        hostname: 'strapi.prod-strapi-fra-01.surmatik.ch',
+        pathname: '/**',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '1337',
