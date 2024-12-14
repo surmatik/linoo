@@ -13,10 +13,9 @@ interface Post {
 }
 
 export default async function Home() {
-  let posts: Post[] = await fetchBlogPosts();
+  const posts: Post[] = await fetchBlogPosts();
 
-  // Posts umkehren, sodass der neueste zuerst angezeigt wird
-  posts = posts.reverse();
+  const reversedPosts = posts.reverse();
 
   return (
     <div className="container">
@@ -41,7 +40,7 @@ export default async function Home() {
       </h2>
 
       <main className="blog-posts">
-        {posts.map((post) => (
+        {reversedPosts.map((post) => (
           <div key={post.id} className="post">
             <Link href={`/${post.slug}`}>
               {post.Image && post.Image.url && (
@@ -60,7 +59,7 @@ export default async function Home() {
             <p>
               {post.Content ? `${post.Content.slice(0, 100)}...` : "No content available."}
             </p>
-            <Link key={post.id} href={`/${post.slug}`} className="read-more">
+            <Link href={`/${post.slug}`} className="read-more">
               ➜ Read more
             </Link>
           </div>
@@ -69,3 +68,5 @@ export default async function Home() {
     </div>
   );
 }
+
+export const dynamic = 'force-dynamic';
