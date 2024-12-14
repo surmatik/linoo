@@ -1,7 +1,5 @@
-// next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -11,7 +9,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'strapi.prod-strapi-fra-01.surmatik.ch',
+        hostname: '**.surmatik.ch',
         pathname: '/**',
       },
       {
@@ -24,4 +22,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
