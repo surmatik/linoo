@@ -1,4 +1,3 @@
-// app/page.tsx
 import Image from 'next/image';
 import { fetchBlogPosts } from '../lib/api';
 import Link from 'next/link';

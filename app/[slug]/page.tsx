@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
-import { fetchBlogPostBySlug, fetchBlogPosts } from '../../lib/api';
+import { fetchBlogPostBySlug } from '../../lib/api';
 import Link from 'next/link';
 
 interface BlogPostProps {
@@ -49,17 +49,4 @@ export default async function BlogPost({ params }: BlogPostProps) {
       </Link>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  try {
-    const posts = await fetchBlogPosts();
-
-    return posts.map((post: any) => ({
-      slug: post.slug,
-    }));
-  } catch (error) {
-    console.error('Fehler beim Generieren der statischen Parameter:', error);
-    return [];
-  }
 }
