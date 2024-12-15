@@ -7,6 +7,7 @@ interface Post {
   slug: string;
   Title: string;
   Content?: string;
+  createdAt: string;
   Image?: {
     url: string;
   };
@@ -15,7 +16,7 @@ interface Post {
 export default async function Home() {
   const posts: Post[] = await fetchBlogPosts();
 
-  const reversedPosts = posts.reverse();
+  const sortedPosts = posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   return (
     <div className="container">
@@ -24,10 +25,18 @@ export default async function Home() {
           <h2>Hey, I'm Lino ✌️</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ex, obcaecati voluptatum nulla nec...</p>
           <div className="social-icons">
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
-            <a href="#"><i className="fab fa-linkedin"></i></a>
-            <a href="#"><i className="fab fa-github"></i></a>
+            <a href="https://instagram.com/surmatik" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@surmatik" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/lino-bertschinger/" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/surmatik" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i>
+            </a>
           </div>
         </div>
         <div className="intro-image">
@@ -40,7 +49,7 @@ export default async function Home() {
       </h2>
 
       <main className="blog-posts">
-        {reversedPosts.map((post) => (
+        {sortedPosts.map((post) => (
           <div key={post.id} className="post">
             <Link href={`/${post.slug}`}>
               {post.Image && post.Image.url && (
@@ -54,10 +63,10 @@ export default async function Home() {
               )}
             </Link>
             <Link href={`/${post.slug}`}>
-              <h3 className="post-title">{post.Title || "Untitled"}</h3>
+              <h3 className="post-title">{post.Title || 'Untitled'}</h3>
             </Link>
             <p>
-              {post.Content ? `${post.Content.slice(0, 100)}...` : "No content available."}
+              {post.Content ? `${post.Content.slice(0, 100)}...` : 'No content available.'}
             </p>
             <Link href={`/${post.slug}`} className="read-more">
               ➜ Read more

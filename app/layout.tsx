@@ -4,8 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Lino\'s Webseite',
-  description: 'Meine persönliche Webseite',
+  title: 'Linoo',
+  description: 'Lino Bertschinger',
 };
 
 export default function RootLayout({

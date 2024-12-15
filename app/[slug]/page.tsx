@@ -45,7 +45,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
       </div>
 
       <Link href="/" className="back-button">
-        &#129044; Go back
+        ⭠ Go back
       </Link>
     </div>
   );
