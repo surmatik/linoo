@@ -195,11 +195,28 @@ li {
     flex-direction: column;
 }
 
+.post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #e5e7eb; /* tailwind: text-gray-200 */
+  }
+  
+
 .post-image {
     border-radius: 10px;
     margin-bottom: -10px;
     height: auto;
     width: 100%;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .post h3 {
@@ -217,6 +234,40 @@ li {
     text-overflow: ellipsis;
     color: #bbbbbb;
 }
+
+hr {
+    margin: 2rem 0;
+}
+
+.post-content pre {
+    background-color: #1e293b;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    white-space: pre-wrap; /* <-- Zeilen umbrechen */
+    word-break: break-word; /* <-- bei langen Strings umbrechen */
+    overflow-x: auto; /* für alle Fälle */
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .post-content code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: #93c5fd; /* tailwind: text-blue-300 */
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #1e293b;
+  }
+  
+  .post-content ul,
+  .post-content ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .post-content li {
+    margin-bottom: 0.5rem;
+  }
 
 .read-more, .back-button {
     display: inline-block;

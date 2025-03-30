@@ -23,7 +23,7 @@ export default async function Home() {
       <div className="intro">
         <div className="intro-text">
           <h2>Hey, I'm Lino ✌️</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ex, obcaecati voluptatum nulla nec...</p>
+          <p>Junior System Engineer mit technischer Begeisterung für Intune, PowerShell, Azure und Microsoft 365</p>
           <div className="social-icons">
             <a href="https://instagram.com/surmatik" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i>

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { fetchBlogPostBySlug } from '../../lib/api';
 import Link from 'next/link';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github-dark.css';
 
 interface BlogPostProps {
   params: {
@@ -23,6 +25,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const highlightedPart = titleWords.slice(2).join(' ');
 
   return (
+    
     <div className="blog-post-container">
       {post.Image && post.Image.url && (
         <div className="post-image-wrapper">
@@ -41,7 +44,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
       </h1>
 
       <div className="post-content">
-        <ReactMarkdown>{post.Content}</ReactMarkdown>
+      <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+        {post.Content}
+      </ReactMarkdown>
       </div>
 
       <Link href="/" className="back-button">
