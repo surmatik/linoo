@@ -269,6 +269,14 @@ hr {
     margin-bottom: 0.5rem;
   }
 
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2rem auto; /* optional: Bild zentrieren */
+    border-radius: 0.5rem; /* optional: abgerundete Ecken */
+  }
+
 .read-more, .back-button {
     display: inline-block;
     padding: 10px 15px;
